@@ -13,10 +13,21 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.9",
+    "@mui/material": "^5.10.10",
+    "@mui/styled-engine-sc": "^5.10.6",
+    "styled-components": "^5.3.6",
+
+
+
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
