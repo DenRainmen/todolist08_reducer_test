@@ -1,4 +1,4 @@
-import {UNION_ACTIONS_TYPE, todolistsReducer} from './todolists-reducer'
+import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, RemoveTodolistAC, todolistsReducer} from './todolists-reducer'
 import { v1 } from 'uuid'
 import { TodolistType } from '../App'
 
@@ -20,14 +20,8 @@ const startState: TodolistType[] = [
 test('correct todolist should be removed',
     () => {
 
-        const action: UNION_ACTIONS_TYPE = {
-            type: 'REMOVE-TODOLIST',
-            payload: {
-                id: todolistId1
-            }
-        }
 
-        const testResult = todolistsReducer(startState, action)
+        const testResult = todolistsReducer(startState, (RemoveTodolistAC(todolistId1)))
 
         expect(testResult.length).toBe(1)
         expect(testResult[0].id).toBe(todolistId2)
@@ -37,10 +31,8 @@ test('correct todolist should be removed',
 
 test("new todolist should be adding", () => {
 
-    const action: UNION_ACTIONS_TYPE = {
-        type: "ADD-TODOLIST",
+    const action = AddTodolistAC()
 
-    }
     const testResult = todolistsReducer(startState, action)
 
     expect(testResult.length).toBe(3)
@@ -51,15 +43,7 @@ test("new todolist should be adding", () => {
 
 test("todolist should change his title ", () => {
 
-
-
-    const action: UNION_ACTIONS_TYPE = {
-        type: "CHANGE-TODOLIST-TITLE",
-        payload: {
-            id: todolistId1,
-            newTitle: "New todolist title"
-        }
-    }
+    const action = ChangeTodolistTitleAC(todolistId1, "New todolist title")
 
     const testResult = todolistsReducer(startState, action)
 
@@ -71,13 +55,8 @@ test("todolist should change his title ", () => {
 
 test("todolist filter should change ", ()=>{
 
-    const action: UNION_ACTIONS_TYPE = {
-        type: "CHANGE-TODOLIST-FILTER",
-        payload: {
-            id: todolistId1,
-            filter: "active"
-        }
-    }
+
+const action = ChangeTodolistFilterAC(todolistId1,"active")
 
     const testResult = todolistsReducer(startState, action)
 
