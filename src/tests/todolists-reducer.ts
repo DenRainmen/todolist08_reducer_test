@@ -7,6 +7,7 @@ import { FilterValuesType, TodolistType } from '../App';
     type: string
     [key: string]: any
 } */
+
 // типизация экшенов
 export type RemoveTodolistActionType = {
     type: 'REMOVE-TODOLIST',
@@ -17,6 +18,7 @@ export type RemoveTodolistActionType = {
 
 export type AddTodolistActionType = {
     type: 'ADD-TODOLIST'
+    id: string
 
 }
 
@@ -57,7 +59,7 @@ export const todolistsReducer =
                 return state.filter(el => el.id !== action.payload.id)
 
             case 'ADD-TODOLIST':
-                const newTodolist: TodolistType = { id: v1(), title: "New Todolist", filter: 'all' }
+                const newTodolist: TodolistType = { id: action.id, title: "New Todolist", filter: 'all' }
                 return [newTodolist, ...state]
 
             case "CHANGE-TODOLIST-TITLE":
@@ -93,7 +95,8 @@ export const RemoveTodolistAC = (todolistId: string): RemoveTodolistActionType =
 export const AddTodolistAC = (): AddTodolistActionType => {
 
     return {
-        type: 'ADD-TODOLIST'
+        type: 'ADD-TODOLIST',
+        id: v1()
     } as const
 
 }
