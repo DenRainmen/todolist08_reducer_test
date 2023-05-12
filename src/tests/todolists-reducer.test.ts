@@ -31,7 +31,7 @@ test('correct todolist should be removed',
 
 test("new todolist should be adding", () => {
 
-    const action = AddTodolistAC()
+    const action = AddTodolistAC('New Todolist')
 
     const testResult = todolistsReducer(startState, action)
 
@@ -56,12 +56,12 @@ test("todolist should change his title ", () => {
 test("todolist filter should change ", ()=>{
 
 
-const action = ChangeTodolistFilterAC(todolistId1,"active")
+const action = ChangeTodolistFilterAC("active", todolistId1)
 
     const testResult = todolistsReducer(startState, action)
 
     expect(testResult[0].filter).toBe("active")
     expect(testResult[1].filter).toBe("all")
-    console.log(testResult)
+
 
 })

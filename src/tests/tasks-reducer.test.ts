@@ -8,6 +8,7 @@ import {
 } from "./tasks-reducer";
 import { v1 } from "uuid";
 import { AddTodolistAC } from "./todolists-reducer";
+import { Title } from "@mui/icons-material";
 
 let todolistId1 = "todolistId-1";
 let todolistId2 = "todolistId-2";
@@ -42,7 +43,7 @@ test("task should be removed",
 // TEST 2 - Task Added
 test("task should be added", () => {
 
-    const action: Unite_Actions_Type = AddTaskAC(todolistId1)
+    const action: Unite_Actions_Type = AddTaskAC(todolistId1, "New Task Title")
 
 
     const result = TaskReducer(initialState, action)
@@ -61,7 +62,7 @@ test("task should be added", () => {
 test("task status should be changed", () => {
 
     //action
-    const action: Unite_Actions_Type = ChangeTaskStatusAC(todolistId1, "1")
+    const action: Unite_Actions_Type = ChangeTaskStatusAC("1", true, todolistId1 )
 
     //result
     const result = TaskReducer(initialState, action)
@@ -77,7 +78,7 @@ test("task status should be changed", () => {
 test("task tittle should be changed", () => {
     //action
 
-    const action: Unite_Actions_Type = TitleTaskChangeAC(todolistId1, "1", "New Task Title")
+    const action: Unite_Actions_Type = TitleTaskChangeAC("1",  "New Task Title",todolistId1)
 
     //result
     const result = TaskReducer(initialState, action)
@@ -93,7 +94,7 @@ test("task tittle should be changed", () => {
 test("when new todolist add also should be adding empty array task by todolist ID key", () => {
 
     // action
-    const action: Unite_Actions_Type = AddTodolistAC()
+    const action: Unite_Actions_Type = AddTodolistAC("New Todolist")
 
     //result
     const result = TaskReducer(initialState, action)
