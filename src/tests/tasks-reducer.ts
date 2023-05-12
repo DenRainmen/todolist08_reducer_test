@@ -98,7 +98,7 @@ export const TaskReducer = (initialState: TasksStateType, action: Unite_Actions_
 //------------------------------------------------------------------------------------------------------------
 
 // Action Creaters
-export const RemoveTaskAC = (todolistId, taskId): RemoveTaskACType => {
+export const RemoveTaskAC = (todolistId: string, taskId: string): RemoveTaskACType => {
 
     return {
         type: "REMOVE-TASK",

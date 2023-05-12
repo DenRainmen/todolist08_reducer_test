@@ -6,20 +6,20 @@ import {
     ChangeTaskStatusAC,
     TitleTaskChangeAC
 } from "./tasks-reducer";
-import {v1} from "uuid";
-import {AddTodolistAC} from "./todolists-reducer";
+import { v1 } from "uuid";
+import { AddTodolistAC } from "./todolists-reducer";
 
 let todolistId1 = "todolistId-1";
 let todolistId2 = "todolistId-2";
 
 const initialState = {
     [todolistId1]: [
-        {id: "1", title: "HTML&CSS", isDone: false},
-        {id: "2", title: "JS", isDone: false}
+        { id: "1", title: "HTML&CSS", isDone: false },
+        { id: "2", title: "JS", isDone: false }
     ],
     [todolistId2]: [
-        {id: "1", title: "Milk", isDone: false},
-        {id: "2", title: "React Book", isDone: false}
+        { id: "1", title: "Milk", isDone: false },
+        { id: "2", title: "React Book", isDone: false }
     ]
 }
 
@@ -101,17 +101,20 @@ test("when new todolist add also should be adding empty array task by todolist I
 
     const keys = Object.keys(result)
 
-    const newKey = keys.find(k => k !== "todolistId1" &&
-    k !== "todolistId2")
+    const newKey = keys.find(k => k !== "todolistId-1" &&
+        k !== "todolistId-2")
+    console.log('newKey: ', newKey)
+    !newKey && new Error("At adding todolist  new key for task is missing")
 
-    !newKey &&  new Error("At adding todolist  new key for task is missing")
 
 
     // tests
     expect(keys.length).toBe(3)
-    expect (typeof(newKey)).toEqual('string')
-    expect(result[newKey]).toEqual([])
+    expect(typeof (newKey)).toEqual('string')
+    newKey && expect(result[newKey]).toEqual([])
+        
 
+    
 
 })
 
