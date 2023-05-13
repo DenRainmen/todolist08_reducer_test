@@ -51,7 +51,6 @@ export type TitleTaskChangeACType = {
 
 
 
-
 export type Unite_Actions_Type = RemoveTaskACType | AddTaskACType | ChangeTaskStatusACType | TitleTaskChangeACType | AddTodolistActionType | RemoveTodolistActionType | AddTodolistActionType
 
 //----------------------------------------------------------------------
