@@ -73,7 +73,8 @@ export const todolistsReducer =
 
 
             default:
-                throw new Error('I don\'t understand this type')
+               /*  throw new Error('I don\'t understand this type') */
+               return state
         }
     }
 

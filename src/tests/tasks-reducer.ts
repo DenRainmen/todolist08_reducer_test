@@ -98,7 +98,8 @@ export const TaskReducer = (initialState: TasksStateType, action: Unite_Actions_
 
 
         default:
-            throw new Error("I dont know this action type")
+            /* throw new Error("I dont know this action type") */
+            return initialState
     }
 
 }
