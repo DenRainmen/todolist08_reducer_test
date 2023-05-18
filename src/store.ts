@@ -1,5 +1,5 @@
-import { TaskReducer } from './tests/tasks-reducer'
-import { todolistsReducer } from './tests/todolists-reducer'
+import { TaskReducer } from './state/tasks-reducer'
+import { TodolistsReducer } from './state/todolists-reducer'
 import { combineReducers} from 'redux'
 import { legacy_createStore as createStore} from 'redux'
 
@@ -8,7 +8,7 @@ import { legacy_createStore as createStore} from 'redux'
 //создали рутовый редьюсер, который собирёт в себя все остальные мелкие редьюсеры
 const rootReducer = combineReducers({
     tasks: TaskReducer,
-    todolists: todolistsReducer
+    todolists: TodolistsReducer
 })
 
 

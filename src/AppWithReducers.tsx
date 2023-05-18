@@ -7,8 +7,8 @@ import { AddItemForm } from './AddItemForm';
 import AppBar from '@mui/material/AppBar/AppBar';
 import { Button, Container, Grid, IconButton, Paper, Toolbar, Typography } from "@mui/material";
 import { Menu } from "@mui/icons-material";
-import { AddTaskAC, ChangeTaskStatusAC, RemoveTaskAC, TaskReducer, TitleTaskChangeAC } from './tests/tasks-reducer';
-import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, RemoveTodolistAC, UNION_ACTIONS_TYPE, todolistsReducer } from './tests/todolists-reducer';
+import { AddTaskAC, ChangeTaskStatusAC, RemoveTaskAC, TaskReducer, TitleTaskChangeAC } from './state/tasks-reducer';
+import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, RemoveTodolistAC, UNION_ACTIONS_TYPE, TodolistsReducer } from './state/todolists-reducer';
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -28,7 +28,7 @@ function App() {
     let todolistId2 = v1();
 
     let [todolists, dispatchToTodolistsReducer] = useReducer<React. Reducer<TodolistType[], UNION_ACTIONS_TYPE>>
-    ( todolistsReducer,
+    ( TodolistsReducer,
     [
         { id: todolistId1, title: "What to learn", filter: "all" },
         { id: todolistId2, title: "What to buy", filter: "all" }

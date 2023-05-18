@@ -59,7 +59,7 @@ const initialState: TodolistType[] = [
 // тудулист-редьюсер
 
 /* Редакс при инициализации посылает сразу во ВСЕ редьюсеры хуй пойми какой экшен , а так же undefined вместо стейта.  */
-export const todolistsReducer =
+export const TodolistsReducer =
     (state: TodolistType[] = initialState, action: UNION_ACTIONS_TYPE): TodolistType[] => {
 
        
