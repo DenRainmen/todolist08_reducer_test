@@ -10,6 +10,8 @@ import { Menu } from "@mui/icons-material";
 import { AddTaskAC, ChangeTaskStatusAC, RemoveTaskAC, TaskReducer, TitleTaskChangeAC } from './state/tasks-reducer';
 import { AddTodolistAC, ChangeTodolistFilterAC, ChangeTodolistTitleAC, RemoveTodolistAC, TodolistsReducer } from './state/todolists-reducer';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { AppRootState } from './store';
 
 
 export type FilterValuesType = "all" | "active" | "completed";
@@ -25,31 +27,18 @@ export type TasksStateType = {
 
 
 function AppWithRedux() {
-    let todolistId1 = v1();
-    let todolistId2 = v1();
+   
 
-
+// хук useDispatch отправляет ВСЕ в рутовый редьюсер
 const dispatch = useDispatch()
 
+// хук useSelector выбирает из REDUX-стейта ту часть стейта, которая нам нужна
+const todolists = useSelector<AppRootState,TodolistType[]>(state => state.todolists)
 
-    let [todolists, dispatchToTodolistsReducer] = useReducer( TodolistsReducer,
-    [
-        { id: todolistId1, title: "What to learn", filter: "all" },
-        { id: todolistId2, title: "What to buy", filter: "all" }
-    ]
-    )
+const tasks = useSelector<AppRootState, TasksStateType>(state => state.tasks)
 
-    let [tasks, dispatchToTasksReducer] = useReducer(TaskReducer,
-        {
-        [todolistId1]: [
-            { id: v1(), title: "HTML&CSS", isDone: true },
-            { id: v1(), title: "JS", isDone: true }
-        ],
-        [todolistId2]: [
-            { id: v1(), title: "Milk", isDone: true },
-            { id: v1(), title: "React Book", isDone: true }
-        ]
-    });
+
+  
 
 
 
