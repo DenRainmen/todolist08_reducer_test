@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
 })
 
 
-// непосредственно создаём store
+// непосредственно создаём сам store
 export const store = createStore(rootReducer)
 
 
