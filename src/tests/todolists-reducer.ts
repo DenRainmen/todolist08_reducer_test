@@ -47,11 +47,22 @@ export type UNION_ACTIONS_TYPE =
 
 //---------------------------------------------------------------
 
+export let todolistId1 = v1();
+export let todolistId2 = v1();
 
+
+const initialState: TodolistType[] = [
+    { id: todolistId1, title: "What to learn", filter: "all" },
+    { id: todolistId2, title: "What to buy", filter: "all" }
+]
 
 // тудулист-редьюсер
+
+/* Редакс при инициализации посылает сразу во ВСЕ редьюсеры хуй пойми какой экшен , а так же undefined вместо стейта.  */
 export const todolistsReducer =
-    (state: TodolistType[], action: UNION_ACTIONS_TYPE): TodolistType[] => {
+    (state: TodolistType[] = initialState, action: UNION_ACTIONS_TYPE): TodolistType[] => {
+
+       
 
         switch (action.type) {
 
